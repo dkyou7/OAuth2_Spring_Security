@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: local # 기본 환경으로 local을 활성화 하겠다는 뜻.
+---
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        # 둘다 적으면 sql문이 터미털에서 형식을 갖추어 보이게 된다.
+        show_sql: true
+        format_sql: true
+  profiles: local
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/ssotest_client;MVCC=TRUE
+    username: sa
+    driver-class-name: org.h2.Driver
+  thymeleaf:  # 타임리프 설정
+    prefix : classpath:templates/
+    suffix : .html
+    cache : false
+server:
+  port: 9000
